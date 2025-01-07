@@ -1,8 +1,10 @@
 package com.hmall.api.config;
 
+import com.hmall.api.client.fallback.ItemClientFallbackFactory;
 import com.hmall.common.utils.UserContext;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
+import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.context.annotation.Bean;
 
 public class DefaultFeignConfig {
@@ -22,5 +24,9 @@ public class DefaultFeignConfig {
                 }
             }
         };
+    }
+
+    public ItemClientFallbackFactory itemClientFallbackFactory() {
+        return new ItemClientFallbackFactory();
     }
 }
